@@ -1,2 +1,3 @@
-# yolo-detection
-testing out object detection model w comp vision
+# FridgePeek
+
+object detection with a computer vision model to detect fridge ingredients and suggest recipes

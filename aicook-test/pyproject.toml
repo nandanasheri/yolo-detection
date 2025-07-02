@@ -1,0 +1,11 @@
+[project]
+name = "yolo-detection"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "easyocr>=1.7.2",
+    "ipykernel>=6.29.5",
+    "ultralytics>=8.3.159",
+]
