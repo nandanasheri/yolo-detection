@@ -28,9 +28,14 @@ export default function RootLayout({
       <body
         className={`${Montserrat_Font.variable} ${Inter_Font.variable} antialiased`}
       >
-        <main className="flex flex-col gap-2 pt-5 px-5 items-center"> 
-          <NavBar/>
-        {children}
+        <div className="flex justify-center gap-1 items-center">
+        <div className="absolute top-4 left-4">
+          <h2 className="text-xl font-bold font-head "><a href="/">Fridge Peek</a></h2>
+        </div>
+        <NavBar/>
+        </div>
+        <main>
+          {children}
         </main>
       </body>
     </html>
