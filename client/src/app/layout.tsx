@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat, Inter } from "next/font/google";
+import {Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import NavBar from "@/components/NavBar";
 
 const Montserrat_Font = Montserrat({
   variable: "--font-montserrat",
@@ -27,7 +28,8 @@ export default function RootLayout({
       <body
         className={`${Montserrat_Font.variable} ${Inter_Font.variable} antialiased`}
       >
-        <main> 
+        <main className="flex flex-col gap-2 pt-5 px-5 items-center"> 
+          <NavBar/>
         {children}
         </main>
       </body>

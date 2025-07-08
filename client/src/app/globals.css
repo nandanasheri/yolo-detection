@@ -10,6 +10,9 @@
   --color-foreground: var(--foreground);
   --font-head: var(--font-montserrat);
   --font-text: var(--font-inter);
+  --color-mainbrown: #3d2814;
+  --color-darkbrown: #1b1006;
+  --color-offwhite: #EAE4D0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,8 +25,8 @@
 body {
   background-image: url('../assets/anime-kitchen-bg.png');
   background-size: cover;         /* Scale the image to cover the entire container */
-  background-position: center;    /* Center the image */
-  background-repeat: no-repeat;   /* Prevent tiling */
+  background-position: center;    
+  background-repeat: no-repeat;   
   color: var(--foreground);
   height: 100vh;
 }
