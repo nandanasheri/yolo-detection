@@ -35,7 +35,7 @@ def predict():
     base64_image = base64.b64encode(buffered.getvalue()).decode("utf-8")
 
     return jsonify({
-        "result": list(objects),
+        "objects": list(objects),
         "image": base64_image
     })
 

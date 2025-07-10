@@ -1,12 +1,14 @@
 'use client'
 import Image from "next/image";
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 
 export default function Upload() {
+  const router = useRouter();
+
   const [file, setFile] = useState<File | null>(null);
   const [error, setError] = useState('');
-  const [uploadedImage, setUploadedImage] = useState(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -33,10 +35,12 @@ export default function Upload() {
         body: formData,
       });
 
-      const data = await response.text();
+      const data = await response.json();
       if (response.ok) {
-        console.log(data)
+        localStorage.setItem("image_data", data['image']);
+        localStorage.setItem("objects", data['objects']);
         setError('');
+        router.push('/analysis');
       } else {
         setError(data || 'An error occurred during upload.');
       }
@@ -63,7 +67,6 @@ export default function Upload() {
               <input type="file" accept="image/*" onChange={handleImageChange} className="px-5 py-1 border border-mainbrown rounded-lg hover:bg-mainbrown hover:text-offwhite" />
               <button type="submit" className="rounded-lg mt-10 self-center text-xl font-text w-fit px-5 py-1 hover:bg-offwhite hover:border-1 hover:text-mainbrown bg-mainbrown text-offwhite hover:cursor-pointer">upload image</button>
               {error && <p style={{ color: 'red' }}>{error}</p>}
-              {uploadedImage && <img src={uploadedImage} alt="Uploaded" width="200" />}
             </form>
             
         </div>
