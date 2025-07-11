@@ -21,14 +21,14 @@ export default function Analysis() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-10 mx-auto max-w-3xl h-[90vh] mt-14 px-4">
+    <div className="flex flex-col gap-10 mx-auto max-w-7xl h-[90vh] mt-14 px-4">
       <h1 className="text-head font-bold text-3xl hover:text-offwhite">Fridge Peek Analysis</h1>
-      <div className="flex flex-col gap-5 justify-center md:justify-start sm:flex-row">
+      <div className="flex flex-col gap-5 justify-center md:justify-between md:flex-row">
         <div>
-            <Image className="rounded-xl" src={`data:image/jpeg;base64,${image}`} alt="ridge image" width={500} height={500} />
+            <Image className="rounded-xl" src={`data:image/jpeg;base64,${image}`} alt="fridge image" width={600} height={700} />
         </div>
 
-        <div className="bg-mainbrown flex flex-col gap-4 px-8 py-3 text-offwhite font-text rounded-xl">
+        <div className="bg-mainbrown md:w-1/3 flex flex-col gap-4 px-8 py-3 text-offwhite font-text rounded-xl">
             <h1 className="text-2xl font-semibold">Objects Detected:</h1>
             <ul className="list-disc text-lg">
               {objects.map((item) => {

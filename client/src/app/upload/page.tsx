@@ -52,10 +52,10 @@ export default function Upload() {
   }
 
   return (
-    <div className="flex flex-col gap-10 mx-auto max-w-3xl h-[90vh] mt-14 px-4">
+    <div className="flex flex-col gap-10 mx-auto max-w-7xl h-[90vh] mt-14 px-4">
       <h1 className="text-head font-bold text-3xl hover:text-offwhite">Upload Your Image</h1>
-      <div className="flex flex-col gap-5 justify-center md:justify-start sm:flex-row">
-        <div className="bg-offwhite flex flex-col gap-4 px-8 py-3 text-mainbrown font-text rounded-xl">
+      <div className="flex flex-col gap-5 justify-center md:justify-between sm:flex-row">
+        <div className="bg-offwhite flex flex-col md:w-1/3 gap-4 px-8 py-3 text-mainbrown font-text rounded-xl">
             <h1 className="text-2xl font-semibold">Instructions</h1>
             <ul className="list-disc text-lg">
                 <li>Take a picture of the inside of your refrigerator!</li>
@@ -65,7 +65,7 @@ export default function Upload() {
             </ul>
 
             <form onSubmit={handleSubmit}>
-              <input type="file" accept="image/*" onChange={handleImageChange} className="px-5 py-1 border border-mainbrown rounded-lg hover:bg-mainbrown hover:text-offwhite" />
+              <input type="file" accept="image/*" onChange={handleImageChange} className="px-5 py-1 w-full border border-mainbrown rounded-lg hover:bg-mainbrown hover:text-offwhite" />
               <button type="submit" className="rounded-lg mt-10 self-center text-xl font-text w-fit px-5 py-1 hover:bg-offwhite hover:border-1 hover:text-mainbrown bg-mainbrown text-offwhite hover:cursor-pointer">upload image</button>
               {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
@@ -73,7 +73,7 @@ export default function Upload() {
         </div>
 
         <div className="flex content-center items-center overflow-hidden">
-            <Image className="rounded-xl min-w-full min-h-full" src="/sample-fridge.jpg" alt="sample fridge image" width={500} height={600} />
+            <Image className="rounded-xl min-w-full min-h-full" src="/sample-fridge.jpg" alt="sample fridge image" width={500} height={700} />
         </div>
       </div>
     </div>
