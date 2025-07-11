@@ -1,11 +1,13 @@
 [project]
 name = "server"
 version = "0.1.0"
-description = "Add your description here"
+description = "API for FridgePeek to run Inference for Object Detection and Classification"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "dotenv>=0.9.9",
     "flask>=3.1.1",
     "flask-cors>=6.0.1",
+    "groq>=0.29.0",
     "ultralytics>=8.3.163",
 ]

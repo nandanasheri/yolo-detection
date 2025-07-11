@@ -1,24 +1,38 @@
 "use client"
-import Link from "next/link";
+
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Analysis() {
   const [image, setImage] = useState("")
   const [objects, setObjects] = useState<string[]>([])
+  const [stringobjects, setStringObjects] = useState("")
+
+  // get detected objects and image on initial render
   useEffect(() => {
     const storedImage = sessionStorage.getItem("image_data");
     let objects_result = sessionStorage.getItem("objects");
-    console.log(objects_result)
-    console.log(objects_result)
+    
     if (storedImage) {
       setImage(storedImage);
     }
     if (objects_result) {
       const list_of_objects = objects_result.split(",")
+      setStringObjects(objects_result)
       setObjects(list_of_objects)
     }
   }, []);
+
+  const findRecipes = async () => {
+    try {
+      const response = await fetch("", {
+        method : 'GET'
+      })
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <div className="flex flex-col gap-10 mx-auto max-w-7xl h-[90vh] mt-14 px-4">
@@ -37,9 +51,9 @@ export default function Analysis() {
                 )
               })}
             </ul>
-            <Link href="/upload">
-              <button className="rounded-lg mt-10 self-center text-xl font-text w-fit px-5 py-1 border-offwhite border-2 hover:bg-offwhite hover:text-mainbrown text-offwhite hover:cursor-pointer">find recipes</button>
-            </Link>
+            
+            <button onClick={findRecipes} className="rounded-lg mt-10 self-center text-xl font-text w-fit px-5 py-1 border-offwhite border-2 hover:bg-offwhite hover:text-mainbrown text-offwhite hover:cursor-pointer">find recipes</button>
+           
         </div>
 
       </div>
