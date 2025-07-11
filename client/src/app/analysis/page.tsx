@@ -5,11 +5,18 @@ import { useState, useEffect } from "react";
 
 export default function Analysis() {
   const [image, setImage] = useState("")
-  const [objects, setObjects] = useState([])
+  const [objects, setObjects] = useState<string[]>([])
   useEffect(() => {
-    const storedImage = sessionStorage.getItem("image");
+    const storedImage = sessionStorage.getItem("image_data");
+    let objects_result = sessionStorage.getItem("objects");
+    console.log(objects_result)
+    console.log(objects_result)
     if (storedImage) {
       setImage(storedImage);
+    }
+    if (objects_result) {
+      const list_of_objects = objects_result.split(",")
+      setObjects(list_of_objects)
     }
   }, []);
 
@@ -24,10 +31,11 @@ export default function Analysis() {
         <div className="bg-mainbrown flex flex-col gap-4 px-8 py-3 text-offwhite font-text rounded-xl">
             <h1 className="text-2xl font-semibold">Objects Detected:</h1>
             <ul className="list-disc text-lg">
-                <li>Eggs</li>
-                <li>Chicken</li>
-                <li>Blah Blah Blah</li>
-                <li>Onions</li>
+              {objects.map((item) => {
+                return (
+                  <li key={item}>{item}</li>
+                )
+              })}
             </ul>
             <Link href="/upload">
               <button className="rounded-lg mt-10 self-center text-xl font-text w-fit px-5 py-1 border-offwhite border-2 hover:bg-offwhite hover:text-mainbrown text-offwhite hover:cursor-pointer">find recipes</button>

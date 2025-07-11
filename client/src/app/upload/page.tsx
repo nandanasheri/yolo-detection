@@ -37,8 +37,9 @@ export default function Upload() {
 
       const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("image_data", data['image']);
-        localStorage.setItem("objects", data['objects']);
+        sessionStorage.setItem("image_data", data['image']);
+        sessionStorage.setItem("objects", data['objects']);
+        
         setError('');
         router.push('/analysis');
       } else {
