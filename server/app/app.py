@@ -45,10 +45,10 @@ def predict():
 @app.route('/recipes', methods=['GET'])
 def getAllRecipes():
     base_url = "https://www.themealdb.com/api/json/v1/1/filter.php"
-    
     all_recipes = []
 
     ingredients = request.args.getlist('i')
+    print(ingredients)
     for each_i in ingredients:
         res = requests.get(base_url, params={'i': each_i})
         recipes = res.json()
@@ -58,6 +58,7 @@ def getAllRecipes():
 
     result = {}
     result['recipes'] = all_recipes
+    print(result)
     return result
 
 @app.route('/fullrecipe', methods=['GET'])

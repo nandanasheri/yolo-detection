@@ -2,11 +2,14 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
+
 
 export default function Analysis() {
   const [image, setImage] = useState("")
   const [objects, setObjects] = useState<string[]>([])
-  const [stringobjects, setStringObjects] = useState("")
+
+  const router = useRouter()
 
   // get detected objects and image on initial render
   useEffect(() => {
@@ -18,16 +21,27 @@ export default function Analysis() {
     }
     if (objects_result) {
       const list_of_objects = objects_result.split(",")
-      setStringObjects(objects_result)
       setObjects(list_of_objects)
     }
   }, []);
 
   const findRecipes = async () => {
     try {
-      const response = await fetch("", {
+      const url = new URL("http://127.0.0.1:5000/recipes");
+
+      const params = new URLSearchParams();
+      objects.forEach(item => params.append("i", item));
+      url.search = params.toString();
+      
+      const response = await fetch(url.toString(), {
         method : 'GET'
       })
+      const data = await response.json()
+      if (response.ok) {
+        sessionStorage.setItem("recipes", data['recipes'])
+        console.log(data)
+      }
+      router.push("/recipes")
     }
     catch (err) {
       console.log(err)
